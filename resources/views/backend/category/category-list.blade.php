@@ -11,6 +11,7 @@
           <h6 class="tx-center"></h6>
         <div class="row row-sm bg-white">
             <div class="col-xl-12 mg-t-25">
+              
                 <div class="tx-right">
                     <a href="{{url('category-add')}}"><i class="fa fa-plus"></i>Add</a>
                 </div>
