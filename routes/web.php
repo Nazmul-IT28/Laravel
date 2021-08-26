@@ -33,3 +33,6 @@ Route::get('category-list', [CategoryController::class, 'categoryList'])->name('
 Route::get('category-edit/{id}', [CategoryController::class, 'categoryEdit'])->name('categoryEdit');
 Route::post('category-update', [CategoryController::class, 'categoryUpdate'])->name('categoryUpdate');
 Route::get('category-delete/{id}', [CategoryController::class, 'categoryDelete'])->name('categoryDelete');
+Route::get('trash-list', [CategoryController::class, 'categoryTrash'])->name('categoryTrash');
+Route::get('trash-restore/{id}', [CategoryController::class, 'categoryRestor'])->name('categoryRestor');
+Route::get('trash-delete/{id}', [CategoryController::class, 'trashDelete'])->name('trashDelete');

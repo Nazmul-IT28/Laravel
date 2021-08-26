@@ -66,6 +66,7 @@
           <ul class="br-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{url('category-add')}}" class="nav-link">Add Category</a></li>
             <li class="nav-item"><a href="{{url('category-list')}}" class="nav-link">Category List</a></li>
+            <li class="nav-item"><a href="{{url('trash-list')}}" class="nav-link">Trash List</a></li>
           </ul>
         <a href="card-dashboard.html" class="br-menu-link">
           <div class="br-menu-item">

@@ -40,13 +40,13 @@ class CategoryController extends Controller
     return redirect('category-list')->with('success','New Category Add Successfull');
    }
 
-   function categoryEdit($id){
+    function categoryEdit($id){
        return view('backend.category.editcategory',[
            'category'=>Category::findOrFail($id),
        ]);
    }
 
-   function categoryUpdate(Request $request){
+    function categoryUpdate(Request $request){
     // Category::findOrFail($request->category_id)->update([
     //     'category_name' => $request-> category_name,
     //     'updated_at'=>Carbon::now(),
@@ -58,9 +58,26 @@ class CategoryController extends Controller
        return redirect('category-list')->with('success','Edit Successfull');
    }
 
-   function categoryDelete($id){
+    function categoryDelete($id){
     Category::findOrFail($id)->delete();
     return back()->with('success','Delete Successfull');
+   }
+
+    function categoryTrash(){
+       return view('backend.category.trash_list',[
+           'trashcat'=>Category::onlyTrashed()->paginate(),
+           'trashcou'=>Category::count(),
+       ]);
+   }
+
+    function categoryRestor($id){
+        Category::onlyTrashed()->findOrFail($id)->restore();
+        return redirect('category-list')->with('success','Restor Successfull');
+   }
+
+    function trashDelete($id){
+        Category::onlyTrashed()->findOrFail($id)->forceDelete();
+        return back()->with('success','Delete Successfull');
    }
 
 }
