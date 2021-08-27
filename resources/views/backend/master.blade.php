@@ -50,30 +50,40 @@
     <div class="br-sideleft overflow-y-auto">
       <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
       <div class="br-sideleft-menu">
-        <a href="{{url('dashboard')}}" class="br-menu-link active">
+        <a href="{{url('dashboard')}}" class="br-menu-link @yield('dashboard_active')">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
-          <a href="{{url('category-add')}}" class="br-menu-link">
-            <div class="br-menu-item">
-              <i class="menu-item-icon icon ion-ios-cart-outline tx-24"></i>
-              <span class="menu-item-label">Category</span>
-              <i class="menu-item-arrow fa fa-angle-down"></i>
-            </div><!-- menu-item -->
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub nav flex-column">
-            <li class="nav-item"><a href="{{url('category-add')}}" class="nav-link">Add Category</a></li>
-            <li class="nav-item"><a href="{{url('category-list')}}" class="nav-link">Category List</a></li>
-            <li class="nav-item"><a href="{{url('trash-list')}}" class="nav-link">Trash List</a></li>
-          </ul>
-        <a href="card-dashboard.html" class="br-menu-link">
+
+      
+        <a href="{{url('category-add')}}" class="br-menu-link @yield('category_active')">
           <div class="br-menu-item">
-            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-            <span class="menu-item-label">Cards &amp; Widgets</span>
+            <i class="menu-item-icon icon ion-ios-cart-outline tx-24"></i>
+            <span class="menu-item-label">Category</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
+        <ul class="br-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{url('category-add')}}" class="nav-link">Add Category</a></li>
+          <li class="nav-item"><a href="{{url('category-list')}}" class="nav-link">Category List</a></li>
+          <li class="nav-item"><a href="{{url('trash-list')}}" class="nav-link">Trash List</a></li>
+        </ul>
+
+        <a href="{{url('subcategory-add')}}" class="br-menu-link @yield('subcategory_active')">
+          <div class="br-menu-item">
+            <i class="menu-item-icon icon ion-ios-pie-outline tx-20 "></i>
+            <span class="menu-item-label">Sub Category</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+        <ul class="br-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{url('subcategory-add')}}" class="nav-link">Add SubCategory</a></li>
+          <li class="nav-item"><a href="{{url('subcategory-list')}}" class="nav-link">SubCategory List</a></li>
+          {{-- <li class="nav-item"><a href="{{url('subtrash-list')}}" class="nav-link">SubTrash List</a></li> --}}
+        </ul>        
+
         <a href="#" class="br-menu-link">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>

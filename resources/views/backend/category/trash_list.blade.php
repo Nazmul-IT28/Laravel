@@ -1,4 +1,7 @@
 @extends('backend.master')
+@section('category_active')
+  active
+@endsection
 @section('content')
 <div class="br-mainpanel">
     <div class="pd-20 bg-light">
@@ -7,7 +10,7 @@
         </a>
     </div>
     <div class="br-pagebody">
-          <h6 class="tx-center">Trashed List({{$trashcou}})</h6>
+          <h6 class="tx-center">Trashed List</h6>
           <h6 class="tx-center"></h6>
         <div class="row row-sm bg-white">
             <div class="col-xl-12 mg-t-25">

@@ -66,7 +66,7 @@ class CategoryController extends Controller
     function categoryTrash(){
        return view('backend.category.trash_list',[
            'trashcat'=>Category::onlyTrashed()->paginate(),
-           'trashcou'=>Category::count(),
+        //    'trashcou'=>Category::count(),
        ]);
    }
 

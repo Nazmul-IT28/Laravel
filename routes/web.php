@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,8 @@ Route::get('category-delete/{id}', [CategoryController::class, 'categoryDelete']
 Route::get('trash-list', [CategoryController::class, 'categoryTrash'])->name('categoryTrash');
 Route::get('trash-restore/{id}', [CategoryController::class, 'categoryRestor'])->name('categoryRestor');
 Route::get('trash-delete/{id}', [CategoryController::class, 'trashDelete'])->name('trashDelete');
+
+                // ------ Sub Category ------
+Route::get('subcategory-add', [SubCategoryController::class, 'subcategoryAdd'])->name('subcategoryAdd');
+Route::post('subcategory-post', [SubCategoryController::class, 'subcategoryPost'])->name('subcategoryPost');
+Route::get('subcategory-list', [SubCategoryController::class, 'subcategoryList'])->name('subcategoryList');

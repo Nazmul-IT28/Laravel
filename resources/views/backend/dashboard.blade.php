@@ -1,4 +1,7 @@
 @extends('backend.master')
+@section('dashboard_active')
+  active
+@endsection
 @section('content')
 <div class="br-mainpanel">
     <div class="pd-30">
