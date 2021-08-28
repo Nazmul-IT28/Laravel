@@ -42,10 +42,10 @@
                       <tbody>
                         @foreach ($scat as $key=> $data)
                         <tr>
-                          <th>{{$cat->firstitem() +$key}}</th>
+                          <th>{{$scat->firstitem() +$key}}</th>
                           <td>{{$data->subcategory_name}}</td>
                           <td>{{$data->slug}}</td>
-                          <td>{{$data->category_id}}</td>
+                          <td>{{$data->category->category_name}}</td>
                           <td>{{$data->created_at !=null ? $data->created_at->diffForHumans() : 'N/A'}}</td>
                           <td>{{$data->updated_at !=null ? $data->updated_at->diffForHumans() : 'N/A'}}</td>
                           <td class="tx-center">

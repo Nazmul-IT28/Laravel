@@ -11,4 +11,8 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
     // protected $fillable=['category_name'];
+    
+    function SubCategory(){
+        return $this->hasOne(SubCategory::Class);
+    }
 }
