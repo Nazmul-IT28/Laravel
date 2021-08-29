@@ -81,7 +81,7 @@
         <ul class="br-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{url('subcategory-add')}}" class="nav-link">Add SubCategory</a></li>
           <li class="nav-item"><a href="{{url('subcategory-list')}}" class="nav-link">SubCategory List</a></li>
-          {{-- <li class="nav-item"><a href="{{url('subtrash-list')}}" class="nav-link">SubTrash List</a></li> --}}
+          <li class="nav-item"><a href="{{url('subtrash-list')}}" class="nav-link">SubTrash List</a></li>
         </ul>        
 
         <a href="#" class="br-menu-link">

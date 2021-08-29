@@ -42,3 +42,7 @@ Route::get('trash-delete/{id}', [CategoryController::class, 'trashDelete'])->nam
 Route::get('subcategory-add', [SubCategoryController::class, 'subcategoryAdd'])->name('subcategoryAdd');
 Route::post('subcategory-post', [SubCategoryController::class, 'subcategoryPost'])->name('subcategoryPost');
 Route::get('subcategory-list', [SubCategoryController::class, 'subcategoryList'])->name('subcategoryList');
+Route::get('subtrash-list', [SubCategoryController::class, 'subtrashList'])->name('subtrashList');
+Route::get('subcategory-edit/{id}', [SubCategoryController::class, 'subcategoryEdit'])->name('subcategoryEdit');
+Route::post('subcategory-update', [SubCategoryController::class, 'subcategoryUpdate'])->name('subcategoryUpdate');
+Route::get('subcategory-delete/{id}', [SubCategoryController::class, 'subcategoryDelete'])->name('subcategoryDelete');

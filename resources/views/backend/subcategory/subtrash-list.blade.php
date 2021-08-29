@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="br-pagebody">
-          <h6 class="tx-center">All SubCategory List({{$lcat}})</h6>
+          <h6 class="tx-center">All SubCategory List</h6>
           <h6 class="tx-center"></h6>
         <div class="row row-sm bg-white">
             <div class="col-xl-12 mg-t-25">
@@ -34,29 +34,27 @@
                           <th class="tx-center">SubCategory Name</th>
                           <th class="tx-center">Slug</th>
                           <th class="tx-center">Category ID</th>
-                          <th class="tx-center">Created_At</th>
-                          <th class="tx-center">Updated_At</th>
+                          <th class="tx-center">Deleted_At</th>
                           <th class="tx-center">Status</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      {{-- <tbody>
                         @foreach ($scat as $key=> $data)
                         <tr>
                           <th>{{$scat->firstitem() +$key}}</th>
                           <td>{{$data->subcategory_name}}</td>
                           <td>{{$data->slug}}</td>
                           <td>{{$data->category->category_name}}</td>
-                          <td>{{$data->created_at !=null ? $data->created_at->diffForHumans() : 'N/A'}}</td>
-                          <td>{{$data->updated_at !=null ? $data->updated_at->diffForHumans() : 'N/A'}}</td>
+                          <td>{{$data->deleted_at !=null ? $data->deleted_at->diffForHumans() : 'N/A'}}</td>
                           <td class="tx-center">
-                              <a href="{{url('subcategory-edit')}}/{{$data->id}}"><button class="btn btn-outline-success">Edit</button></a>
-                              <a href="{{url('subcategory-delete')}}/{{$data->id}}"><button class="btn btn-outline-danger">Delete</button></a>
+                              <a href="{{url('subcategory-edit')}}/{{$data->id}}"><button class="btn btn-outline-success">Restore</button></a>
+                              <a href="{{url('subcategory-delete')}}/{{$data->id}}"><button class="btn btn-outline-danger">Current Delete</button></a>
                           </td>
                         </tr>
                         @endforeach                        
-                      </tbody>
+                      </tbody> --}}
                     </table>
-                    {{$scat}}
+                    {{-- {{$scat}} --}}
                 </div>
                 {{-- <P class="mg-t-5 tx-danger"><i>NazmulIslam Talukder</i></P> --}}
             </div>
