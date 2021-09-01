@@ -60,6 +60,16 @@ class SubCategoryController extends Controller
         return redirect('subcategory-list')->with('success','Subcategory Updated Successfull');
     }
 
+    function subcategoryDelete($id){
+        Subcategory::findOrFail($id)->delete();
+        return back()->with('success','Delete Successfull');
+    }
+
+    // function subcategoryDelete($id){
+    //     Subcategory::onlyTrashed()->findOrFail($id)->forceDelete();
+    //     return back()->with('success','Delete Successfull');
+    // }
+
     function subtrashList(){
         return view('backend.subcategory.subtrash-list');
     }

@@ -82,7 +82,20 @@
           <li class="nav-item"><a href="{{url('subcategory-add')}}" class="nav-link">Add SubCategory</a></li>
           <li class="nav-item"><a href="{{url('subcategory-list')}}" class="nav-link">SubCategory List</a></li>
           <li class="nav-item"><a href="{{url('subtrash-list')}}" class="nav-link">SubTrash List</a></li>
-        </ul>        
+        </ul>
+        
+        <a href="{{route('productAdd')}}" class="br-menu-link @yield('product_active')">
+          <div class="br-menu-item">
+            <i class="fa fa-shirtsinbulk tx-18 "></i>
+            <span class="menu-item-label">Products</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+        <ul class="br-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('productAdd')}}" class="nav-link">Product Add</a></li>
+          <li class="nav-item"><a href="{{route('productList')}}" class="nav-link">Product List</a></li>
+          <li class="nav-item"><a href="{{route('productTrash')}}" class="nav-link">Trash List</a></li>
+        </ul> 
 
         <a href="#" class="br-menu-link">
           <div class="br-menu-item">
@@ -730,8 +743,7 @@
     <script src="{{asset('style/lib/jquery.sparkline.bower/jquery.sparkline.min.js')}}"></script>
     <script src="{{asset('style/lib/d3/d3.js')}}"></script>
     <script src="{{asset('style/lib/rickshaw/rickshaw.min.js')}}"></script>
-
-
+    @yield('footer_js')
     <script src="{{asset('style/js/bracket.js')}}"></script>
     <script src="{{asset('style/js/ResizeSensor.js')}}"></script>
     <script src="{{asset('style/js/dashboard.js')}}"></script>
