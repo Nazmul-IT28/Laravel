@@ -21,7 +21,7 @@
                   </div>                                        
                 @endif
               <h6>Add New Product</h6>  
-               <form action="{{url('subcategory-post')}}" method="POST">
+               <form action="{{route('productFrom')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                 <div class="form-layout"> 
                   <div class="row mg-b-25">
@@ -66,20 +66,20 @@
                   </div>
 
                   <div class="row mg-b-25">
-                     <div class="col-lg-12">
-                       <div class="form-group mg-b-10-force">
-                         <label for="subcategory_name" class="form-control-label">SubCategory Name <span class="tx-danger">*</span></label>
-                         <select name="subcategory_id" id="subcategory_id" class="form-control @error('subcategory_id') is-invalid @enderror">
-                           {{-- <option value>Select Category</option>
-                           @foreach ($category as $data)
-                             <option value="{{$data->id}}">{{$data->category_name}}</option>
-                           @endforeach --}}
-                         </select>
-                         @error('subcategory_id')
-                             <div class="alert alert-danger">{{$message}}</div>
-                         @enderror
-                       </div>
-                     </div>
+                    <div class="col-lg-12">
+                      <div class="form-group mg-b-10-force">
+                        <label for="subcategory_name" class="form-control-label">Category Name <span class="tx-danger">*</span></label>
+                        <select name="subcategory_id" id="subcategory_id" class="form-control @error('subcategory_id') is-invalid @enderror">
+                          <option value>Select Category</option>
+                          @foreach ($subcategory as $data)
+                            <option value="{{$data->id}}">{{$data->subcategory_name}}</option>
+                          @endforeach
+                        </select>
+                        @error('subcategory_id')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                      </div>
+                    </div>
                   </div>
 
                   <div class="row mg-b-25">
@@ -146,9 +146,27 @@
          $('#slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
       });
 
-      $('#category_id').change(function(){
-         letcategory_id=$(this).val();
-         console.log('category_id');
-      })
+      // $('#category_id').change(function(){
+      //    let category_id=$(this).val();
+      //    if(category_id){
+      //     $.ajax({
+      //       type "GET",
+      //       url: "{{url('subcat-id')}}"+category_id,
+      //       success:function(e){
+      //         if(e){
+      //           $('#subcategory_id').empty();
+      //           $('#sbucategory_id').append('<option value>Select One</option>');
+      //           $.each(e, function(key, value){
+      //             $('#sbucategory_id').append('<option value="'+value.id+'">'+valie.subcategory_name+'</option>');
+      //           })
+      //         }else{
+      //           $('#subcategory_id').empty();
+      //         }
+      //       }
+      //     })
+      //    }else{
+      //     $('#subcategory_id').empty();
+      //    }
+      // })
    </script>
 @endsection

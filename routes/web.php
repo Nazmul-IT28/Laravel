@@ -50,6 +50,8 @@ Route::get('subcategory-delete/{id}', [SubCategoryController::class, 'subcategor
 
                 //------ Products ------
 Route::get('product-add', [ProductController::class, 'productAdd'])->name('productAdd');
+Route::POST('product-from', [ProductController::class, 'productFrom'])->name('productFrom');
+// Route::get('subcat-id/{id}', [ProductController::class, 'subcatApi'])->name('subcatApi');
 Route::get('product-list', [ProductController::class, 'productList'])->name('productList');
 Route::get('product-trash', [ProductController::class, 'productTrash'])->name('productTrash');
 
