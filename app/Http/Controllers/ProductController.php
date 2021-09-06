@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
@@ -14,7 +15,9 @@ class ProductController extends Controller
         $last_value=collect(request()->segments())->last();
         $last=Str::of($last_value)->replace('_', '');
         return view('backend.product.product-list',[
-            'last'=>$last
+            'last'=>$last,
+            'product'=>Product::latest()->simplepaginate(),
+            'count'=>Product::count(),
         ]);
     }
 
@@ -35,13 +38,11 @@ class ProductController extends Controller
     // }
 
     function productFrom(Request $request){
+        $request->validate([
+            'title'=>['required'],
+            'thumbnail'=>['required', 'image'],
+        ]);
         $product=new Product;
-        if($request->hasFile('thumbnail')){
-            $image=$request->file('thumbnail');
-            $ext=Str::slug($request->title).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('images/'. $ext));
-            $product->thumbnail=$ext;
-        }
         $product->title=$request->title;
         $product->slug=$request->slug;
         $product->category_id=$request->category_id;
@@ -50,7 +51,29 @@ class ProductController extends Controller
         $product->description=$request->description;
         $product->price=$request->price;
         $product->save();
+
+        if($request->hasFile('thumbnail')){
+            $image=$request->file('thumbnail');
+            $ext=Str::slug($request->title).'.'.$image->getClientOriginalExtension();
+            $new=Product::findOrFail($product->id);
+            $path=public_path('images/' .$new->created_at->format('Y/m/').$new->id.'/');
+            File::makeDirectory($path, $mode=0777, true, true);
+            Image::make($image)->save($path . $ext);
+            $new->thumbnail=$ext;
+            $new->save();
+        }
         return back()->with('success','Insert Successfull');
+    }
+
+    function productEdit($id){
+        $last_value=collect(request()->segments())->last();
+        $last=Str::of($last_value)->replace('_', '');
+        return view('backend.product.product-edit',[
+            'category'=>Category::orderBy('category_name', 'asc')->get(),
+            'subcategory'=>Subcategory::orderBy('subcategory_name', 'asc')->get(),
+            'last'=>$last,
+            'product'=>Product::findOrFail($id),
+        ]);
     }
 
 }

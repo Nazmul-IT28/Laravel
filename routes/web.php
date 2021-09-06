@@ -54,4 +54,5 @@ Route::POST('product-from', [ProductController::class, 'productFrom'])->name('pr
 // Route::get('subcat-id/{id}', [ProductController::class, 'subcatApi'])->name('subcatApi');
 Route::get('product-list', [ProductController::class, 'productList'])->name('productList');
 Route::get('product-trash', [ProductController::class, 'productTrash'])->name('productTrash');
+Route::get('product-edit/{id}', [ProductController::class, 'productEdit'])->name('productEdit');
 

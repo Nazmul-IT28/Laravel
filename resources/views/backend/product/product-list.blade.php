@@ -9,7 +9,7 @@
       <span class="breadcrumb-item active text-capitalize">{{$last}}</span>
     </div>
     <div class="br-pagebody">
-          <h6 class="tx-center">Product List</h6>
+          <h6 class="tx-center">Product List({{$count}})</h6>
           <h6 class="tx-center"></h6>
         <div class="row row-sm bg-white">
             <div class="col-xl-12 mg-t-25">
@@ -30,31 +30,42 @@
                       <thead class="table table-bordered">
                         <tr>
                           <th class="tx-center">SL</th>
-                          <th class="tx-center">SubCategory Name</th>
+                          <th class="tx-center">Product Name</th>
                           <th class="tx-center">Slug</th>
                           <th class="tx-center">Category ID</th>
+                          <th class="tx-center">SubCategory ID</th>
+                          <th class="tx-center">Summery</th>
+                          <th class="tx-center">Description</th>
+                          <th class="tx-center">Price</th>
+                          <th class="tx-center">Thumbnail</th>
                           <th class="tx-center">Created_At</th>
                           <th class="tx-center">Updated_At</th>
                           <th class="tx-center">Status</th>
                         </tr>
                       </thead>
-                      {{-- <tbody>
-                        @foreach ($scat as $key=> $data)
+                      <tbody>
+                        @foreach ($product as $key=> $data)
                         <tr>
-                          <th>{{$scat->firstitem() +$key}}</th>
-                          <td>{{$data->subcategory_name}}</td>
+                          <th>{{$product->firstitem() +$key}}</th>
+                          <td>{{$data->title}}</td>
                           <td>{{$data->slug}}</td>
                           <td>{{$data->category->category_name}}</td>
+                          <td>{{$data->subcategory->subcategory_name}}</td>
+                          <td>{{Str::limit($data->summery, '50')}}</td>
+                          <td>{{Str::limit($data->description, '50')}}</td>
+                          <td>{{$data->price}}</td>
+                          <td><a download href="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}"><img width="100" src="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}" alt=""></a></td>
                           <td>{{$data->created_at !=null ? $data->created_at->diffForHumans() : 'N/A'}}</td>
                           <td>{{$data->updated_at !=null ? $data->updated_at->diffForHumans() : 'N/A'}}</td>
                           <td class="tx-center">
-                              <a href="{{url('subcategory-edit')}}/{{$data->id}}"><button class="btn btn-outline-success">Edit</button></a>
-                              <a href="{{url('subcategory-delete')}}/{{$data->id}}"><button class="btn btn-outline-danger">Delete</button></a>
+                              <a href="{{url('product-edit')}}/{{$data->id}}"><button class="btn btn-outline-success">Edit</button></a>
+                              {{-- <a href="{{url('subcategory-delete')}}/{{$data->id}}"><button class="btn btn-outline-danger">Delete</button></a> --}}
                           </td>
                         </tr>
                         @endforeach                        
-                      </tbody> --}}
+                      </tbody>
                     </table>
+                  {{$product}}  
                 </div>
             </div>
         </div>

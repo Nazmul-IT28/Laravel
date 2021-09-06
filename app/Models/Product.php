@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    function Category(){
+        return $this->belongsTo(Category::Class, 'category_id');
+    }
+
+    function SubCategory(){
+        return $this->belongsTo(SubCategory::Class, 'subcategory_id');
+    }
 }

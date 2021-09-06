@@ -11,7 +11,7 @@
     <div class="br-pagebody mg-t-5 pd-x-30">
         <div class="row row-sm bg-light">
             <div class="col-xl-8 m-auto">
-              <h5 class="tx-center mt-5 mb-5">Product Add</h5>
+              <h5 class="tx-center mt-5 mb-5">Update Product</h5>
                 @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Hey!</strong>{{session('success')}}
@@ -20,15 +20,15 @@
                     </button>
                   </div>                                        
                 @endif
-              <h6>Add New Product</h6>  
-               <form action="{{route('productFrom')}}" method="POST" enctype="multipart/form-data">
+              <h6>Update Product</h6>  
+               <form action="{{url('product-edit')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                 <div class="form-layout"> 
                   <div class="row mg-b-25">
                     <div class="col-lg-12">
                       <div class="form-group mg-b-10-force">
                         <label for="title" class="form-control-label">Product Name <span class="tx-danger">*</span></label>
-                        <input type="text" name="title" id="title" value="{{$title ?? old('title')}}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Category Name">
+                        <input type="text" name="title" id="title" value="{{$product->title ?? old('title')}}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Product Name">
                         @error('title')
                             <div class="alert alert-danger">{{$message}}</div>
                         @enderror
@@ -37,25 +37,17 @@
                   </div>
 
                   <div class="row mg-b-25">
-                     <div class="col-lg-12">
-                       <div class="form-group mg-b-10-force">
-                         <label for="slug" class="form-control-label">Product Slug <span class="tx-danger">*</span></label>
-                         <input type="text" name="slug" id="slug" value="{{$slug ?? old('slug')}}" class="form-control @error('slug') is-invalid @enderror" placeholder="Enter Category Name">
-                         @error('slug')
-                             <div class="alert alert-danger">{{$message}}</div>
-                         @enderror
-                       </div>
-                     </div>
-                   </div>
-
-                  <div class="row mg-b-25">
                     <div class="col-lg-12">
                       <div class="form-group mg-b-10-force">
                         <label for="category_name" class="form-control-label">Category Name <span class="tx-danger">*</span></label>
                         <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror">
                           <option value>Select Category</option>
                           @foreach ($category as $data)
-                            <option value="{{$data->id}}">{{$data->category_name}}</option>
+                            <option
+                            @if ($product->category_id==$data->id)
+                              selected
+                            @endif
+                            value="{{$data->id}}">{{$data->category_name}}</option>
                           @endforeach
                         </select>
                         @error('category_id')
@@ -72,7 +64,11 @@
                         <select name="subcategory_id" id="subcategory_id" class="form-control @error('subcategory_id') is-invalid @enderror">
                           <option value>Select Category</option>
                           @foreach ($subcategory as $data)
-                            <option value="{{$data->id}}">{{$data->subcategory_name}}</option>
+                            <option
+                            @if ($product->subcategory_id==$data->id)
+                              selected
+                            @endif
+                            value="{{$data->id}}">{{$data->subcategory_name}}</option>
                           @endforeach
                         </select>
                         @error('subcategory_id')
@@ -84,33 +80,9 @@
 
                   <div class="row mg-b-25">
                      <div class="col-lg-12">
-                        <div class="form-group mg-b-10-force">
-                         <label for="summery" class="form-control-label">Product Summery<span class="tx-danger">*</span></label>
-                         <textarea type="text" name="summery" value="{{old('summery')}}" class="form-control @error('summery') is-invalid @enderror" placeholder="Summery hare"></textarea>
-                         @error('summery')
-                             <div class="alert alert-danger">{{$message}}</div>
-                         @enderror
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="row mg-b-25">
-                    <div class="col-lg-12">
-                       <div class="form-group mg-b-10-force">
-                        <label for="description" class="form-control-label">Product Description<span class="tx-danger">*</span></label>
-                        <textarea type="text" name="description" value="{{old('description')}}" class="form-control @error('description') is-invalid @enderror" placeholder="Description hare"></textarea>
-                        @error('description')
-                            <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
-                       </div>
-                    </div>
-                 </div>
-
-                  <div class="row mg-b-25">
-                     <div class="col-lg-12">
                        <div class="form-group mg-b-10-force">
                          <label for="price" class="form-control-label">Product Price<span class="tx-danger">*</span></label>
-                         <input type="text" name="price" value="{{$price ?? old('price')}}" class="form-control @error('price') is-invalid @enderror" placeholder="Product Price Ex:$500">
+                         <input type="text" name="price" value="{{$product->price ?? old('price')}}" class="form-control @error('price') is-invalid @enderror" placeholder="Product Price Ex:$500">
                          @error('price')
                              <div class="alert alert-danger">{{$message}}</div>
                          @enderror
@@ -131,8 +103,17 @@
                      </div>
                   </div>
 
+                  <div class="row mg-b-25">
+                     <div class="col-lg-12">
+                        <div class="form-group mg-b-10-force">
+                           <label for="thumbnail_preview" class="form-control-label">Thumbnail Preview<span class="tx-danger">*</span></label>
+                           <img width="100" src="{{asset('images/' .$product->created_at->format('Y/m/').$product->id.'/'.$product->thumbnail)}}" alt="">
+                        </div>
+                     </div>
+                  </div>
+
                   <div class="form-layout-footer mg-t-30 mg-b-30 tx-center">
-                      <button class="btn btn-info">Submit Form</button>
+                      <button class="btn btn-info">Update Form</button>
                   </div> 
                </form>
             </div>
@@ -145,28 +126,5 @@
       $('#title').keyup(function(){
          $('#slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
       });
-
-      // $('#category_id').change(function(){
-      //    let category_id=$(this).val();
-      //    if(category_id){
-      //     $.ajax({
-      //       type "GET",
-      //       url: "{{url('subcat-id')}}"+category_id,
-      //       success:function(e){
-      //         if(e){
-      //           $('#subcategory_id').empty();
-      //           $('#sbucategory_id').append('<option value>Select One</option>');
-      //           $.each(e, function(key, value){
-      //             $('#sbucategory_id').append('<option value="'+value.id+'">'+valie.subcategory_name+'</option>');
-      //           })
-      //         }else{
-      //           $('#subcategory_id').empty();
-      //         }
-      //       }
-      //     })
-      //    }else{
-      //     $('#subcategory_id').empty();
-      //    }
-      // })
    </script>
 @endsection
