@@ -76,4 +76,32 @@ class ProductController extends Controller
         ]);
     }
 
+    function productUpdate(Request $request){
+        $request->validate([
+            'title'=>['required'],
+            'thumbnail'=>['required', 'image'],
+        ]);
+        $product=Product::findOrFail($request->product_id);
+        $product->title=$request->title;
+        $product->category_id=$request->category_id;
+        $product->subcategory_id=$request->subcategory_id;
+        $product->price=$request->price;
+        if($request->hasFile('thumbnail')){
+            $image=$request->file('thumbnail');
+            $ext=Str::slug($request->title).'.'.$image->getClientOriginalExtension();
+            $old_path=public_path('images/' .$product->created_at->format('Y/m/').$product->id.'/'.$product->thumbnail);
+
+            if(file_exists($old_path)){
+                unlink($old_path);
+            }
+
+            $path=public_path('images/' .$product->created_at->format('Y/m/').$product->id.'/');
+            File::makeDirectory($path, $mode=0777, true, true);
+            Image::make($image)->save($path . $ext);
+            $product->thumbnail=$ext;
+        }
+        $product->save();
+        return redirect('product-list')->with('success','Update Successfull');
+    }
+
 }

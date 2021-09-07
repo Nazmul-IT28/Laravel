@@ -21,19 +21,20 @@
                   </div>                                        
                 @endif
               <h6>Update Product</h6>  
-               <form action="{{url('product-edit')}}" method="POST" enctype="multipart/form-data">
+               <form action="{{route('productUpdate')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                 <div class="form-layout"> 
+                  <input type="hidden" name="product_id" value="{{$product->id}}"> 
                   <div class="row mg-b-25">
-                    <div class="col-lg-12">
-                      <div class="form-group mg-b-10-force">
-                        <label for="title" class="form-control-label">Product Name <span class="tx-danger">*</span></label>
-                        <input type="text" name="title" id="title" value="{{$product->title ?? old('title')}}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Product Name">
-                        @error('title')
-                            <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
-                      </div>
-                    </div>
+                     <div class="col-lg-12">
+                        <div class="form-group mg-b-10-force">
+                           <label for="title" class="form-control-label">Product Name <span class="tx-danger">*</span></label>
+                           <input type="text" name="title" id="title" value="{{$product->title ?? old('title')}}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Product Name">
+                           @error('title')
+                              <div class="alert alert-danger">{{$message}}</div>
+                           @enderror
+                        </div>
+                     </div>
                   </div>
 
                   <div class="row mg-b-25">
@@ -95,7 +96,7 @@
                        <div class="form-group mg-b-10-force">
                          <label for="thumbnail" class="form-control-label">Product Thumbnail<span class="tx-danger">*</span></label>
                          
-                         <input type="file" name="thumbnail" value="{{$thumbnail ?? old('thumbnail')}}" class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Enter Category Name">
+                         <input type="file" name="thumbnail" value="{{$thumbnail ?? old('thumbnail')}}" class="form-control @error('thumbnail') is-invalid @enderror" onchange="document.getElementById('image_id').src=window.URL.createObjectURL(this.files[0])">
                          @error('thumbnail')
                              <div class="alert alert-danger">{{$message}}</div>
                          @enderror
@@ -106,7 +107,7 @@
                      <div class="col-lg-12">
                         <div class="form-group mg-b-10-force">
                            <label for="thumbnail_preview" class="form-control-label">Thumbnail Preview<span class="tx-danger">*</span></label>
-                           <img width="100" src="{{asset('images/' .$product->created_at->format('Y/m/').$product->id.'/'.$product->thumbnail)}}" alt="">
+                           <img id="image_id" width="100" src="{{asset('images/' .$product->created_at->format('Y/m/').$product->id.'/'.$product->thumbnail)}}" alt="">
                         </div>
                      </div>
                   </div>

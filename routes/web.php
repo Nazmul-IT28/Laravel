@@ -55,4 +55,5 @@ Route::POST('product-from', [ProductController::class, 'productFrom'])->name('pr
 Route::get('product-list', [ProductController::class, 'productList'])->name('productList');
 Route::get('product-trash', [ProductController::class, 'productTrash'])->name('productTrash');
 Route::get('product-edit/{id}', [ProductController::class, 'productEdit'])->name('productEdit');
+Route::POST('product-update', [ProductController::class, 'productUpdate'])->name('productUpdate');
 
