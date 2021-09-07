@@ -102,7 +102,6 @@
                        </div>
                      </div>
                   </div>
-
                   <div class="row mg-b-25">
                      <div class="col-lg-12">
                         <div class="form-group mg-b-10-force">
