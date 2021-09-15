@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -27,6 +28,8 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
+                //------Frontend------//
+Route::get('/', [FrontendController::class, 'frontend'])->name('frontend');
                 //------ Category-------//
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('category-add', [CategoryController::class, 'categoryAdd'])->name('categoryAdd');
