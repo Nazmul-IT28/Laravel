@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tohoney - Home Page</title>
+    <title>[Nazmul]E_Commerce Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/favicon.png')}}">
@@ -32,10 +32,6 @@
 </head>
 
 <body>
-    <!--Start Preloader-->
-    <div class="preloader-wrap">
-        <div class="spinner"></div>
-    </div>
     <!-- search-form here -->
     <div class="search-area flex-style">
         <span class="closebar">Close</span>
@@ -55,19 +51,19 @@
     <!-- search-form here -->
     <!-- header-area start -->
     <header class="header-area">
-        <div class="header-top bg-2">
+        <div class="header-top bg-2 bg-dark">
             <div class="fluid-container">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <ul class="d-flex header-contact">
-                            <li><i class="fa fa-phone"></i> +01 123 456 789</li>
-                            <li><i class="fa fa-envelope"></i> youremail@gmail.com</li>
+                            <li class="text-white"><i class="fa fa-phone text-white"></i> +8801940475267</li>
+                            <li class="text-white"><i class="fa fa-envelope"></i> nazmulns8989@gmail.com</li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-12">
                         <ul class="d-flex account_login-area">
                             <li>
-                                <a href="javascript:void(0);"><i class="fa fa-user"></i> My Account <i class="fa fa-angle-down"></i></a>
+                                <a class="text-white" href="javascript:void(0);"><i class="fa fa-user"></i> My Account <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown_style">
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="register.html">Register</a></li>
@@ -76,7 +72,7 @@
                                     <li><a href="wishlist.html">wishlist</a></li>
                                 </ul>
                             </li>
-                            <li><a href="register.html"> Login/Register </a></li>
+                            <li><a class="text-white" href="register.html"> Login/Register </a></li>
                         </ul>
                     </div>
                 </div>
