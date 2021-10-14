@@ -30,6 +30,8 @@ require __DIR__.'/auth.php';
 
                 //------Frontend------//
 Route::get('/', [FrontendController::class, 'frontend'])->name('frontend');
+Route::get('product/{slug}', [FrontendController::class, 'singleProduct'])->name('singleProduct');
+Route::get('/shop', [FrontendController::class, 'Shop'])->name('Shop');
                 //------ Category-------//
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('category-add', [CategoryController::class, 'categoryAdd'])->name('categoryAdd');

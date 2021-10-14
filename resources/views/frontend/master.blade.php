@@ -32,6 +32,10 @@
 </head>
 
 <body>
+    <!--Start Preloader-->
+    {{-- <div class="preloader-wrap">
+        <div class="spinner"></div>
+    </div> --}}
     <!-- search-form here -->
     <div class="search-area flex-style">
         <span class="closebar">Close</span>
@@ -51,19 +55,19 @@
     <!-- search-form here -->
     <!-- header-area start -->
     <header class="header-area">
-        <div class="header-top bg-2 bg-dark">
+        <div class="header-top bg-2">
             <div class="fluid-container">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <ul class="d-flex header-contact">
-                            <li class="text-white"><i class="fa fa-phone text-white"></i> +8801940475267</li>
-                            <li class="text-white"><i class="fa fa-envelope"></i> nazmulns8989@gmail.com</li>
+                            <li><i class="fa fa-phone"></i> +8801940475267</li>
+                            <li><i class="fa fa-envelope"></i> nazmulns8989@gmail.com</li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-12">
                         <ul class="d-flex account_login-area">
                             <li>
-                                <a class="text-white" href="javascript:void(0);"><i class="fa fa-user"></i> My Account <i class="fa fa-angle-down"></i></a>
+                                <a href="javascript:void(0);"><i class="fa fa-user"></i> My Account <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown_style">
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="register.html">Register</a></li>
@@ -72,7 +76,7 @@
                                     <li><a href="wishlist.html">wishlist</a></li>
                                 </ul>
                             </li>
-                            <li><a class="text-white" href="register.html"> Login/Register </a></li>
+                            <li><a href="register.html"> Login/Register </a></li>
                         </ul>
                     </div>
                 </div>
@@ -93,6 +97,7 @@
                             <ul class="d-flex">
                                 <li class="active"><a href="index.html">Home</a></li>
                                 <li><a href="about.html">About</a></li>
+                                <li><a href="{{route('Shop')}}">Shop</a></li>
                                 <li>
                                     <a href="javascript:void(0);">Shop <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown_style">
@@ -260,7 +265,44 @@
         </div>
     </header>
     <!-- header-area end -->
+    <!-- slider-area start -->
     @yield('content')
+    <!-- slider-area end -->
+    <!-- featured-area start -->
+    @yield('content6')
+    <!-- featured-area end -->
+    <!-- start count-down-section -->
+    @yield('section4')
+    <!-- end count-down-section -->
+    <!-- product-area start -->
+    @yield('section5')
+    <!-- product-area end -->
+    <!-- product-area start -->
+    @yield('product')
+    <!-- product-area end -->
+    <!-- testmonial-area start -->
+    @yield('section3')
+    <!-- testmonial-area end -->
+    <!-- start social-newsletter-section -->
+    <section class="social-newsletter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="newsletter text-center">
+                        <h3>Subscribe  Newsletter</h3>
+                        <div class="newsletter-form">
+                            <form>
+                                <input type="text" class="form-control" placeholder="Enter Your Email Address...">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end social-newsletter-section -->
     <!-- .footer-area start -->
     <div class="footer-area">
         <div class="footer-top">
@@ -303,16 +345,16 @@
                     <div class="col-lg-3 col-md-8 col-sm-12">
                         <div class="footer-adress">
                             <ul>
-                                <li><a href="#"><span>Email:</span> domain@gmail.com</a></li>
-                                <li><a href="#"><span>Tel:</span> 0131234567</a></li>
-                                <li><a href="#"><span>Adress:</span> 52 Web Bangale , Adress line2 , ip:3105</a></li>
+                                <li><a href="#"><span>Email:</span> nazmulns8989@gmail.com</a></li>
+                                <li><a href="#"><span>Tel:</span> 01940475267</a></li>
+                                <li><a href="#"><span>Adress:</span> 52 Web Bangale , Adress Mymensingh, Muktagacha</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="footer-reserved">
                             <ul>
-                                <li>Copyright © 2019 Tohoney All rights reserved.</li>
+                                <li>Copyright © 2021 Nazmul_IT All rights reserved By Nazmul Islam.</li>
                             </ul>
                         </div>
                     </div>
@@ -370,7 +412,6 @@
             </div>
         </div>
     </div>
-    <!-- Modal area start -->
     <!-- jquery latest version -->
     <script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <!-- bootstrap js -->

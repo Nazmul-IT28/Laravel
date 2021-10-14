@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Product;
+use App\Models\Brand;
+// use App\Models\ProductGallery;
 use Image;
 
 class ProductController extends Controller
@@ -16,7 +18,7 @@ class ProductController extends Controller
         $last=Str::of($last_value)->replace('_', '');
         return view('backend.product.product-list',[
             'last'=>$last,
-            'product'=>Product::latest()->simplepaginate(),
+            'product'=>Product::with(['category'])->latest()->simplepaginate(),
             'count'=>Product::count(),
         ]);
     }
@@ -26,6 +28,7 @@ class ProductController extends Controller
         $last=Str::of($last_value)->replace('_', '');
         return view('backend.product.product-from',[
             'category'=>Category::orderBy('category_name', 'asc')->get(),
+            'brands'=>Brand::orderBy('brand_name', 'asc')->get(),
             'subcategory'=>Subcategory::orderBy('subcategory_name', 'asc')->get(),
             'last'=>$last,
         ]);
@@ -46,6 +49,7 @@ class ProductController extends Controller
         $product->title=$request->title;
         $product->slug=$request->slug;
         $product->category_id=$request->category_id;
+        $product->brand_id=$request->brand_id;
         $product->subcategory_id=$request->subcategory_id;
         $product->summery=$request->summery;
         $product->description=$request->description;
@@ -71,6 +75,7 @@ class ProductController extends Controller
         return view('backend.product.product-edit',[
             'category'=>Category::orderBy('category_name', 'asc')->get(),
             'subcategory'=>Subcategory::orderBy('subcategory_name', 'asc')->get(),
+            'brands'=>Brand::orderBy('brand_name', 'asc')->get(),
             'last'=>$last,
             'product'=>Product::findOrFail($id),
         ]);
@@ -83,6 +88,7 @@ class ProductController extends Controller
         ]);
         $product=Product::findOrFail($request->product_id);
         $product->title=$request->title;
+        $product->brand_id=$request->brand_id;
         $product->category_id=$request->category_id;
         $product->subcategory_id=$request->subcategory_id;
         $product->price=$request->price;

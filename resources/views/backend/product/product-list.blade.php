@@ -55,6 +55,12 @@
                           <td>{{Str::limit($data->description, '50')}}</td>
                           <td>{{$data->price}}</td>
                           <td><a download href="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}"><img width="100" src="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}" alt=""></a></td>
+                          {{-- <td>
+                            @foreach 
+                              {{$data->ProductGallery}}
+                            <img src="" alt="">
+                            @endforeach
+                          </td> --}}
                           <td>{{$data->created_at !=null ? $data->created_at->diffForHumans() : 'N/A'}}</td>
                           <td>{{$data->updated_at !=null ? $data->updated_at->diffForHumans() : 'N/A'}}</td>
                           <td class="tx-center">

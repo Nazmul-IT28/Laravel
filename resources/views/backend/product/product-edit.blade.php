@@ -40,6 +40,27 @@
                   <div class="row mg-b-25">
                     <div class="col-lg-12">
                       <div class="form-group mg-b-10-force">
+                        <label for="brand_name" class="form-control-label">Brand Name <span class="tx-danger">*</span></label>
+                        <select name="brand_id" id="brand_name" class="form-control @error('brand_name') is-invalid @enderror">
+                          <option value>Select Category</option>
+                          @foreach ($brands as $brand)
+                            <option
+                            @if ($product->brand_name==$brand->id)
+                              selected
+                            @endif
+                            value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                          @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mg-b-25">
+                    <div class="col-lg-12">
+                      <div class="form-group mg-b-10-force">
                         <label for="category_name" class="form-control-label">Category Name <span class="tx-danger">*</span></label>
                         <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror">
                           <option value>Select Category</option>
