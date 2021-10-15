@@ -148,6 +148,18 @@
                      </div>
                   </div>
 
+                  <div class="row mg-b-25">
+                    <div class="col-lg-12">
+                      <div class="form-group mg-b-10-force">
+                        <label for="image" class="form-control-label">Product Gallery<span class="tx-danger">*</span></label>
+                        <input multiple type="file" name="image" value="{{$image ?? old('image')}}" class="form-control @error('image') is-invalid @enderror" placeholder="Select Product Image">
+                        @error('image')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                      </div>
+                    </div>
+                 </div>
+
                   <div class="form-layout-footer mg-t-30 mg-b-30 tx-center">
                       <button class="btn btn-info">Submit Form</button>
                   </div> 
