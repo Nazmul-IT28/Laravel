@@ -161,7 +161,7 @@
                  </div>
 
                   <div class="form-layout-footer mg-t-30 mg-b-30 tx-center">
-                      <button class="btn btn-info">Submit Form</button>
+                      <button class="btn btn-info">Submit Form </button>
                   </div> 
                </form>
             </div>
