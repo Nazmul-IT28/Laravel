@@ -34,10 +34,9 @@
                           <th class="tx-center">Slug</th>
                           <th class="tx-center">Category ID</th>
                           <th class="tx-center">SubCategory ID</th>
-                          <th class="tx-center">Summery</th>
-                          <th class="tx-center">Description</th>
                           <th class="tx-center">Price</th>
                           <th class="tx-center">Thumbnail</th>
+                          <th class="tx-center">Image</th>
                           <th class="tx-center">Created_At</th>
                           <th class="tx-center">Updated_At</th>
                           <th class="tx-center">Status</th>
@@ -51,16 +50,16 @@
                           <td>{{$data->slug}}</td>
                           <td>{{$data->category->category_name}}</td>
                           <td>{{$data->subcategory->subcategory_name}}</td>
-                          <td>{{Str::limit($data->summery, '50')}}</td>
-                          <td>{{Str::limit($data->description, '50')}}</td>
+                          {{-- <td>{{Str::limit($data->summery, '50')}}</td>
+                          <td>{{Str::limit($data->description, '50')}}</td> --}}
                           <td>{{$data->price}}</td>
-                          <td><a download href="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}"><img width="100" src="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}" alt=""></a></td>
-                          {{-- <td>
-                            @foreach 
-                              {{$data->ProductGallery}}
-                            <img src="" alt="">
-                            @endforeach
-                          </td> --}}
+                          <td><a img download href="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}"><img width="100" src="{{asset('images/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}" alt=""></a></td>
+                          <td>
+                            <img width="100" src="{{asset('images/product-gallery/'.$data->created_at->format('Y/m/').$data->id.'/'.$data->thumbnail )}}">
+                            {{-- @foreach ($data->ProductGallery as $PGallery)
+                              <img src="{{asset('images/product-gallery/'.$PGallery->created_at->format('Y/m/').$PGallery->product_id.'/'.$PGallery->image_name)}}">
+                            @endforeach --}}
+                          </td>
                           <td>{{$data->created_at !=null ? $data->created_at->diffForHumans() : 'N/A'}}</td>
                           <td>{{$data->updated_at !=null ? $data->updated_at->diffForHumans() : 'N/A'}}</td>
                           <td class="tx-center">

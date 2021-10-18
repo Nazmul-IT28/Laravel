@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Product;
 use App\Models\Brand;
-// use App\Models\ProductGallery;
+use App\Models\ProductGallery;
 use Image;
 
 class ProductController extends Controller
@@ -18,7 +18,7 @@ class ProductController extends Controller
         $last=Str::of($last_value)->replace('_', '');
         return view('backend.product.product-list',[
             'last'=>$last,
-            'product'=>Product::with(['category'])->latest()->simplepaginate(),
+            'product'=>Product::with(['category', 'ProductGallery'])->latest()->simplepaginate(),
             'count'=>Product::count(),
         ]);
     }
@@ -34,16 +34,10 @@ class ProductController extends Controller
         ]);
     }
 
-    // Show Subcategory JS---
-    // function subcatApi($id){
-    //     $api=Subcategory::where('category_id', $id)->get();
-    //     return response()->json($api);
-    // }
-
     function productFrom(Request $request){
         $request->validate([
             'title'=>['required'],
-            'thumbnail'=>['required', 'image'],
+            'thumbnail'=>['required', 'image'],  
         ]);
         $product=new Product;
         $product->title=$request->title;
@@ -66,6 +60,22 @@ class ProductController extends Controller
             $new->thumbnail=$ext;
             $new->save();
         }
+
+        if($request->hasFile('image')){
+            $images=$request->file('image');
+            foreach($images as $image1){
+
+                $img_ext=Str::slug($request->title).'-'.Str::random(3).'.'.$image1->getClientOriginalExtension();
+                $path=public_path('images/product-gallery/' .$product->created_at->format('Y/m/').$new->id.'/');
+                File::makeDirectory($path, $mode=0777, true, true);
+                Image::make($image1)->save($path . $ext);
+                $img = new ProductGallery;
+                $img->product_id=$product->id;
+                $img->image_name=$img_ext;
+                $img->save();
+            }
+        }
+
         return back()->with('success','Insert Successfull');
     }
 

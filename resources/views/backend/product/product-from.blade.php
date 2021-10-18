@@ -103,7 +103,7 @@
                      <div class="col-lg-12">
                         <div class="form-group mg-b-10-force">
                          <label for="summery" class="form-control-label">Product Summery<span class="tx-danger">*</span></label>
-                         <textarea type="text" name="summery" value="{{old('summery')}}" class="form-control @error('summery') is-invalid @enderror" placeholder="Summery hare"></textarea>
+                         <textarea type="text" name="summery" id="summery" value="{{old('summery')}}" class="form-control @error('summery') is-invalid @enderror" placeholder="Summery hare"></textarea>
                          @error('summery')
                              <div class="alert alert-danger">{{$message}}</div>
                          @enderror
@@ -115,7 +115,7 @@
                     <div class="col-lg-12">
                        <div class="form-group mg-b-10-force">
                         <label for="description" class="form-control-label">Product Description<span class="tx-danger">*</span></label>
-                        <textarea type="text" name="description" value="{{old('description')}}" class="form-control @error('description') is-invalid @enderror" placeholder="Description hare"></textarea>
+                        <textarea type="text" name="description" id="description" value="{{old('description')}}" class="form-control @error('description') is-invalid @enderror" placeholder="Description hare"></textarea>
                         @error('description')
                             <div class="alert alert-danger">{{$message}}</div>
                         @enderror
@@ -127,7 +127,7 @@
                      <div class="col-lg-12">
                        <div class="form-group mg-b-10-force">
                          <label for="price" class="form-control-label">Product Price<span class="tx-danger">*</span></label>
-                         <input type="text" name="price" value="{{$price ?? old('price')}}" class="form-control @error('price') is-invalid @enderror" placeholder="Product Price Ex:$500">
+                         <input type="text" name="price" id="price" value="{{$price ?? old('price')}}" class="form-control @error('price') is-invalid @enderror" placeholder="Product Price Ex:$500">
                          @error('price')
                              <div class="alert alert-danger">{{$message}}</div>
                          @enderror
@@ -140,7 +140,7 @@
                        <div class="form-group mg-b-10-force">
                          <label for="thumbnail" class="form-control-label">Product Thumbnail<span class="tx-danger">*</span></label>
                          
-                         <input type="file" name="thumbnail" value="{{$thumbnail ?? old('thumbnail')}}" class="form-control @error('thumbnail') is-invalid @enderror" placeholder="Enter Category Name">
+                         <input type="file" name="thumbnail"  id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror">
                          @error('thumbnail')
                              <div class="alert alert-danger">{{$message}}</div>
                          @enderror
@@ -152,7 +152,7 @@
                     <div class="col-lg-12">
                       <div class="form-group mg-b-10-force">
                         <label for="image" class="form-control-label">Product Gallery<span class="tx-danger">*</span></label>
-                        <input multiple type="file" name="image" value="{{$image ?? old('image')}}" class="form-control @error('image') is-invalid @enderror" placeholder="Select Product Image">
+                        <input multiple class="form-control @error('image') is-invalid @enderror" type="file" name="image[]" id="image">
                         @error('image')
                             <div class="alert alert-danger">{{$message}}</div>
                         @enderror
@@ -161,7 +161,7 @@
                  </div>
 
                   <div class="form-layout-footer mg-t-30 mg-b-30 tx-center">
-                      <button class="btn btn-info">Submit Form </button>
+                      <button class="btn btn-info">Submit Form</button>
                   </div> 
                </form>
             </div>
